@@ -1,0 +1,54 @@
+@import '../../../styles/variables.scss';
+
+$height: 200px;
+
+footer {
+    align-items: center;
+    bottom: 0;
+    height: $height;
+    left: 0;
+    position: absolute;
+    width: 100%;
+
+    .footer-section {
+        
+        .label {
+            align-items: center;
+            display: flex;
+            height: $height;
+            justify-content: flex-end;
+            position: relative;
+            transform: rotate(180deg);
+            width: 100%;
+            writing-mode: vertical-rl;
+
+            &::before {
+                content: "";
+                background-color: $color_secondary;
+                height: $height - 50px;
+                margin-bottom: 50px;
+                position: absolute;
+                width: 3px;
+            }
+        }
+
+        .pilots {
+            .pilot-card {
+                cursor: pointer;
+
+                .pilot-image {
+                    max-height: 160px;
+                    max-width: 100px;
+                    filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.25));
+                }
+
+                .pilot-name{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+$gutter: 20px;
+$max-columns: 12;
+
+@mixin col($columns) {
+    $width: calc((100% / #{$max-columns}) * #{$columns} - #{$gutter});
+    width: $width;
+    max-width: $width;
+    margin-left: $gutter/2;
+    margin-right: $gutter/2;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$gutter/2;
+    margin-right: -$gutter/2;
+
+    .col{
+        @include col(1);
+    }
+
+    @for $col from 2 through $max-columns {
+		.col-#{$col} {
+            @include col($col);
+		}
+	}
+}
