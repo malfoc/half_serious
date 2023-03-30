@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <div class="wrapper">
-    <app-container></app-container>
+    <app-container [starship]="starship" [total]="totalStarships"></app-container>
 </div>
 
-<app-footer></app-footer>
+<app-footer [pilots]="starship.pilots"></app-footer>

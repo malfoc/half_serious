@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Starship } from 'src/app/interfaces/starship.interface';
-import { SwapiService } from "../../services/swapi.service";
+import { SwapiService } from "src/app/services/swapi.service";
+import { Pilot } from 'src/app/models/pilot.model';
+import { Starship } from 'src/app/models/starship.model';
 
 @Component({
   selector: 'app-main',
@@ -12,12 +13,29 @@ import { SwapiService } from "../../services/swapi.service";
 export class MainComponent implements OnInit {
 
   starships: Starship[] = []
+  
+  starship: Starship;
+  
+  totalStarships: number = 0
 
-  constructor(private swapi: SwapiService) {}
+  private readonly defaultIndexStarship: number = 3;
+
+  constructor(private swapi: SwapiService) {
+    
+    const pilots: Pilot[] = []
+
+    this.starship = new Starship( 0, '', '', '', '', '', '', '', '', '', '', '', '', '', pilots);
+
+  }
 
   ngOnInit() {
     this.swapi.get().then(starships => {
-      console.log(starships);
+      this.starships = starships
+
+      console.log(this.starships);
+
+      this.starship = this.starships[ this.defaultIndexStarship ]
+      this.totalStarships = this.starships.length
     })
   }
 

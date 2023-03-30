@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Planet } from '../interfaces/planet.interface';
-import { Pilot } from '../interfaces/pilot.interface';
-import { Starship } from '../interfaces/starship.interface';
+
+import { Pilot as PilotInterface } from '../interfaces/pilot.interface';
+import { Pilot as PilotModel } from '../models/pilot.model';
+
+import { Starship } from '../models/starship.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +17,7 @@ export class SwapiService {
   private readonly baseUrl: string = 'https://swapi.dev/api'
 
   private planets: Planet[] = []
-  private pilots: Pilot[] = []
+  private pilots: PilotInterface[] = []
 
   constructor(
     private http: HttpClient,
@@ -57,8 +60,8 @@ export class SwapiService {
     }))
   }
 
-  async _pilots(): Promise<Pilot[]> {
-    const pilots: Pilot[] = await this._load('people')
+  async _pilots(): Promise<PilotInterface[]> {
+    const pilots: PilotInterface[] = await this._load('people')
     return pilots.map((pilot, key) => {
 
       let homeworld: Planet[] = [];
@@ -87,30 +90,42 @@ export class SwapiService {
     const starships: Starship[] = await this._load('starships')
     return starships.map((starship, key) => {
       
-      let pilots: Pilot[] = [];
+      let pilots: PilotModel[] = [];
       starship.pilots.forEach((url) => {
         const pilot = this.pilots.find(pilot => pilot.url === url)
         if ( pilot ) {
-          pilots.push(pilot)
+          pilots.push(new PilotModel(
+            pilot.id,
+            pilot.name,
+            pilot.height,
+            pilot.mass,
+            pilot.hair_color,
+            pilot.skin_color,
+            pilot.eye_color,
+            pilot.birth_year,
+            pilot.gender,
+            pilot.homeworld,
+          ))
         }
       })
 
-      return {
-        id: key + 1,
-        name: starship.name,
-        manufacturer: starship.manufacturer,
-        cost_in_credits: starship.cost_in_credits,
-        length: starship.length,
-        max_atmosphering_speed: starship.max_atmosphering_speed,
-        crew: starship.crew,
-        passengers: starship.passengers,
-        cargo_capacity: starship.cargo_capacity,
-        consumables: starship.consumables,
-        hyperdrive_rating: starship.hyperdrive_rating,
-        mglt: starship.mglt,
-        starship_class: starship.starship_class,
-        pilots: pilots,
-      }
+      return new Starship(
+        key + 1,
+        starship.name,
+        starship.model,
+        starship.manufacturer,
+        starship.cost_in_credits,
+        starship.length,
+        starship.max_atmosphering_speed,
+        starship.crew,
+        starship.passengers,
+        starship.cargo_capacity,
+        starship.consumables,
+        starship.hyperdrive_rating,
+        starship.mglt,
+        starship.starship_class,
+        pilots,
+      )
     })
   }
 }

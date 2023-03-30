@@ -5,15 +5,30 @@
         </aside>
         <article class="col-10">
             <div class="pilots-container row">
-                <div class="col-3">
+                
+                <div class="col-3" *ngIf="pilots.length == 0">
                     <div class="pilot-card row">
                         <div class="col-4 valign-middle">
-                            <img class="pilot-image" src="./assets/characters/13.png" alt="Fullname">
+                            <img class="pilot-image" src="./assets/characters/not_found.svg" alt="Unknown">
                         </div>
                         <div class="col-8 valign-middle">
                             <div class="pilot-name">
-                                <div class="text-subtitle">Firstname</div>
-                                <div class="text-bold">Lastname</div>
+                                <div class="text-subtitle">Unknown</div>
+                                <div class="text-bold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-3" *ngFor="let pilot of pilots">
+                    <div class="pilot-card row">
+                        <div class="col-4 valign-middle">
+                            <img class="pilot-image" [src]="pilot.imageUrl" [alt]="pilot.name">
+                        </div>
+                        <div class="col-8 valign-middle">
+                            <div class="pilot-name">
+                                <div class="text-subtitle">{{ pilot.firstname }}</div>
+                                <div class="text-bold">{{ pilot.lastname }}</div>
                             </div>
                         </div>
                     </div>

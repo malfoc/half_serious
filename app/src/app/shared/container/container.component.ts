@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Starship } from 'src/app/models/starship.model';
 
 @Component({
   selector: 'app-container',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./container.component.scss']
 })
 export class ContainerComponent {
+
+  @Input() starship: Starship;
+  
+  @Input() total: number = 0;
+
+  constructor() {
+    this.starship = new Starship( 0, '', '', '', '', '', '', '', '', '', '', '', '', '', []);
+  }
 
 }

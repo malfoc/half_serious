@@ -1,15 +1,15 @@
 <div class="starship-name">
-    <h1>Millennium Falcon</h1>
+    <h1>{{ starship.name }}</h1>
 </div>
 
-<div class="starship-image align-center valign-middle">
-    <img src="./assets/starships/10.png" alt="Millenium Falcon">
+<div class="starship-image align-center valign-middle" *ngIf="starship.id != 0">
+    <img [src]="starship.imageUrl" [alt]="starship.name">
 </div>
 
 <section class="container">
     <article class="counter">
-        <h2>10</h2>
-        <h3>/36</h3>
+        <h2>{{ starship.index }}</h2>
+        <h3>/ {{ total }}</h3>
     </article>
 
     <article class="info">
@@ -17,22 +17,22 @@
             <div class="col-6">
                 <div class="row">
                     <div class="col-12 text-title">
-                        Millennium Falcon
+                        {{ starship.name }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-subtitle">
-                        YT-1300 light freighter
+                        {{ starship.model }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-bold">
-                        Light freighter
+                        {{ starship.starship_class }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 text-small">
-                        Corellian Engineering Corporation
+                        {{ starship.manufacturer }}
                     </div>
                 </div>
             </div>
