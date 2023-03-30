@@ -1,5 +1,7 @@
 <div class="starship-name">
-    <h1>{{ starship.name }}</h1>
+    <ul *ngFor="let name of splitedName">
+        <li><h1>{{ name }}</h1></li>
+    </ul>
 </div>
 
 <div class="starship-image align-center valign-middle" *ngIf="starship.id != 0">

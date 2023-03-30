@@ -7,6 +7,7 @@ import { Pilot as PilotInterface } from '../interfaces/pilot.interface';
 import { Pilot as PilotModel } from '../models/pilot.model';
 
 import { Starship } from '../models/starship.model';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class SwapiService {
     private http: HttpClient,
   ) {}
 
-  async get() {
+  async builder() {
 
     this.planets = await this._planets()
     this.pilots = await this._pilots()
@@ -31,16 +32,16 @@ export class SwapiService {
     return await this._starships()
   }
 
-  async _load(model: string): Promise<any> {
+  async _get(model: string): Promise<any> {
 
     const records: any[] = []
 
-    const { count, results }: any = await this.http.get(`${ this.baseUrl }/${model}/`).toPromise()
+    const { count, results }: any = await lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/`))
     records.push(results)
 
     const length = Math.ceil(count / results.length)
     const promises = Array.from(new Array(length), ( _, page) =>
-      this.http.get(`${ this.baseUrl }/${model}/?page=${ page + 1 }`).toPromise()
+      lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/?page=${ page + 1 }`))
     )
     promises.shift()
 
@@ -53,7 +54,7 @@ export class SwapiService {
   }
 
   async _planets(): Promise<Planet[]> {
-    const planets: Planet[] = await this._load('planets')
+    const planets: Planet[] = await this._get('planets')
     return planets.map((planet) => ({
       name: planet.name,
       url: planet.url
@@ -61,7 +62,7 @@ export class SwapiService {
   }
 
   async _pilots(): Promise<PilotInterface[]> {
-    const pilots: PilotInterface[] = await this._load('people')
+    const pilots: PilotInterface[] = await this._get('people')
     return pilots.map((pilot, key) => {
 
       let homeworld: Planet[] = [];
@@ -87,7 +88,7 @@ export class SwapiService {
   }
 
   async _starships(): Promise<Starship[]> {
-    const starships: Starship[] = await this._load('starships')
+    const starships: Starship[] = await this._get('starships')
     return starships.map((starship, key) => {
       
       let pilots: PilotModel[] = [];
