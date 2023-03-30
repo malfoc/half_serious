@@ -1,27 +1,34 @@
+@use 'sass:math';
+
 $gutter: 20px;
 $max-columns: 12;
 
 @mixin col($columns) {
-    $width: calc((100% / #{$max-columns}) * #{$columns} - #{$gutter});
-    width: $width;
-    max-width: $width;
-    margin-left: $gutter/2;
-    margin-right: $gutter/2;
+    flex-basis: calc((100% / #{$max-columns}) * #{$columns} - #{$gutter});
+    margin-left: math.div($gutter, 2);
+    margin-right: math.div($gutter, 2);
+
+    &:first-child{
+        margin-left: 0;
+    } 
+    
+    &:last-child{
+        margin-right: 0;
+    }
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -$gutter/2;
-    margin-right: -$gutter/2;
+    width: 100%;
 
-    .col{
+    .col {
         @include col(1);
     }
 
     @for $col from 2 through $max-columns {
-		.col-#{$col} {
+        .col-#{$col} {
             @include col($col);
-		}
-	}
+        }
+    }
 }

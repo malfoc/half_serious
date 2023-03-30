@@ -2,53 +2,57 @@
 
 $height: 200px;
 
+$max-columns: 12;
+
 footer {
-    align-items: center;
+    position: fixed;
     bottom: 0;
-    height: $height;
-    left: 0;
-    position: absolute;
     width: 100%;
+    display: flex;
+    height: $height;
 
-    .footer-section {
-        
-        .label {
-            align-items: center;
-            display: flex;
-            height: $height;
-            justify-content: flex-end;
-            position: relative;
-            transform: rotate(180deg);
-            width: 100%;
-            writing-mode: vertical-rl;
+    .pilots-label {
+        align-items: center;
+        display: flex;
+        height: $height;
+        justify-content: flex-end;
+        position: relative;
+        transform: rotate(180deg);
+        width: 100%;
+        writing-mode: vertical-rl;
 
-            &::before {
-                content: "";
-                background-color: $color_secondary;
-                height: $height - 50px;
-                margin-bottom: 50px;
-                position: absolute;
-                width: 3px;
+        &::before {
+            content: "";
+            background-color: $color_secondary;
+            height: $height - 50px;
+            margin-bottom: 50px;
+            position: absolute;
+            width: 3px;
+        }
+    }
+
+    .pilots-container {
+        height: 100%;
+        padding: 20px 0;
+        position: relative;
+        backdrop-filter: blur(30px);
+
+        .pilot-card {
+            height: 100%;
+            cursor: pointer;
+
+            .pilot-image {
+                max-height: 160px;
+                max-width: 100px;
+                filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.25));
+            }
+            
+            .pilot-name{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
             }
         }
 
-        .pilots {
-            .pilot-card {
-                cursor: pointer;
-
-                .pilot-image {
-                    max-height: 160px;
-                    max-width: 100px;
-                    filter: drop-shadow(4px 4px 30px rgba(0, 0, 0, 0.25));
-                }
-
-                .pilot-name{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    height: 100%;
-                }
-            }
-        }
     }
 }
