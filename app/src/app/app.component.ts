@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Starship } from './models/starship.model';
 import { SwapiService } from './services/swapi.service';
 import { StarshipService } from './services/starship.service';
 
@@ -11,16 +10,28 @@ import { StarshipService } from './services/starship.service';
 })
 export class AppComponent implements OnInit {
 
-  starships: Starship[] = []
+  isLoading: boolean = true
 
   constructor(
     private swapi: SwapiService,
-    private starship: StarshipService,
+    private starship$: StarshipService,
   ) {}
 
   async ngOnInit() {
     const starships = await this.swapi.builder()
-    this.starship.set(starships)
+    this.starship$.set( starships )
+    this.isLoading = false
+
+    this.backgroundChange()
+    
+  }
+
+  backgroundChange() : void {
+    document.body.style.backgroundColor = '#E3E7EB';
+    document.body.style.backgroundImage = 'url("./assets/bg.svg")';
+    document.body.style.backgroundPositionX = 'center';
+    document.body.style.backgroundPositionY = 'bottom';
+    document.body.style.backgroundRepeat = 'no-repeat';
   }
 
 }

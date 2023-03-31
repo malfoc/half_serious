@@ -5,19 +5,22 @@ import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContainerComponent } from './container/container.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    ContainerComponent
+    ContainerComponent,
+    LoadingComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    ContainerComponent
+    ContainerComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule

@@ -3,7 +3,7 @@ export class Pilot {
     private fullname: string[] = []
 
     private readonly assets: number[] = [
-        4, 13, 14, 24, 30
+        1, 4, 10, 11, 13, 14, 21, 24, 30, 34, 43
     ]
 
     constructor(

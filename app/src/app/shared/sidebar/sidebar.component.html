@@ -1,1 +1,22 @@
-<p>sidebar works!</p>
+<div class="sidebar-overlay" 
+    [ngClass]="{'fade-out': !show, 'fade-in': show}"></div>
+
+<div class="sidebar-content"
+    [ngClass]="{'swipe-out': !show, 'swipe-in': show }">
+    
+    <header class="align-right">
+        <button class="btn btn-icon btn-reverse" (click)="onToggleSidebar()">
+            <i class="icon-cancel"></i>
+        </button>
+    </header>
+
+    <section>
+        <ul *ngFor="let starship of starships; let i = index">
+            <li 
+                (click)="goTo(i)"
+                [ngClass]="{'active': starship.id === selected}">
+                    {{ starship.id }}. {{ starship.name }}
+            </li>
+        </ul>
+    </section>
+</div>

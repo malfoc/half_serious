@@ -1,12 +1,10 @@
-@use 'sass:math';
-
 $gutter: 20px;
 $max-columns: 12;
 
 @mixin col($columns) {
     flex-basis: calc((100% / #{$max-columns}) * #{$columns} - #{$gutter});
-    margin-left: math.div($gutter, 2);
-    margin-right: math.div($gutter, 2);
+    margin-left: calc($gutter / 2);
+    margin-right: calc($gutter / 2);
 
     &:first-child{
         margin-left: 0;

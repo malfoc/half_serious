@@ -3,7 +3,7 @@ import { Pilot } from "../models/pilot.model";
 export class Starship {
 
     private readonly assets: number[] = [
-        4, 5, 15
+        4, 5, 12, 15
     ]
 
     constructor(

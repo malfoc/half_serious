@@ -1,0 +1,77 @@
+@import '../../../styles/variables.scss';
+
+.sidebar-overlay {
+	height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+    background-color: $color_primary;
+    position: fixed;
+
+    &.fade-out {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        pointer-events: none;
+    }
+
+    &.fade-in {
+        opacity: 25%;
+        transition: opacity 0.3s ease-in;
+        pointer-events: all;
+    }
+}
+
+.sidebar-content {
+    height: 100%;
+	top: 0;
+	width: 300px;
+	z-index: 9999;
+    background-color: $color_primary;
+    position: fixed;
+    padding: 50px 0;
+    color: $color_tertiary;
+    transition: all 0.3s ease;
+
+    &.swipe-out {
+        left: -300px;
+    }
+
+    &.swipe-in {
+        left: 0px;
+    }
+
+    header {
+        padding: 10px 20px;
+    }
+
+    section {
+        overflow-y: scroll;
+        height: calc(100vh - 100px);
+        padding-bottom: 20px;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            padding-top: 10px;
+            
+            li {
+                padding: 10px 60px 10px 20px;
+                cursor: pointer;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+    
+                &:hover {
+                    color: $color_secondary;
+                }
+    
+                &.active {
+                    border-left: $color_secondary 3px solid;
+                    color: $color_secondary;
+                }
+            }
+        }
+    }
+}

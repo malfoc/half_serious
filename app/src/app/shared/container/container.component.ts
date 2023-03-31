@@ -17,7 +17,7 @@ export class ContainerComponent {
   }
 
   get splitedName(): string[] {
-    return this.starship.name.split(' ')
+    return this.starship.name.split(' ').slice(0, 2)
   }
 
 }

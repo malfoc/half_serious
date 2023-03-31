@@ -7,17 +7,10 @@ header {
     width: 100%;
 
     button {
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
         left: 64px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-
-        i {
-            font-size: 24px;
-        }
     }
     
     img {

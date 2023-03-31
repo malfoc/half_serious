@@ -1,5 +1,19 @@
+<app-header 
+    (toggleSidebar)="toggleSidebar()"/>
+
+<app-sidebar 
+    [starships]="starships" 
+    [selected]="starship.id"
+    [show]="show" 
+    (toggleSidebar)="toggleSidebar()"
+    (goToStarship)="goToStarship($event)" />
+
 <div class="wrapper">
-    <app-container [starship]="starship" [total]="totalStarships"></app-container>
+    <app-container 
+        [starship]="starship" 
+        [total]="totalStarships" 
+        (wheel)="onWheelScroll($event)" />
 </div>
 
-<app-footer [pilots]="starship.pilots"></app-footer>
+<app-footer 
+    [pilots]="starship.pilots"/>

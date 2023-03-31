@@ -3,15 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from '../pages/main/main.component';
 
-/**
- * Default starship: Millennium Falcon
- */
-const defaultIdStarship: string = '5';
-
 const routes: Routes = [
-  { path: ':id', component: MainComponent },
-  { path: '', redirectTo: defaultIdStarship, pathMatch: 'full' },
-  { path: '**', redirectTo: defaultIdStarship }
+  { path: '', component: MainComponent, pathMatch: 'full' },
+  { path: '**', redirectTo: '' }
 ]
 
 @NgModule({
