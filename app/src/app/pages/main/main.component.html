@@ -1,19 +1,27 @@
 <app-header 
     (toggleSidebar)="toggleSidebar()"/>
 
-<app-sidebar 
-    [starships]="starships" 
-    [selected]="starship.id"
-    [show]="show" 
-    (toggleSidebar)="toggleSidebar()"
-    (goToStarship)="goToStarship($event)" />
-
 <div class="wrapper">
     <app-container 
         [starship]="starship" 
         [total]="totalStarships" 
-        (wheel)="onWheelScroll($event)" />
+        (wheel)="onWheelScroll($event)"
+        (toggleModal)="toggleModal($event)" />
 </div>
 
 <app-footer 
-    [pilots]="starship.pilots"/>
+    [pilots]="starship.pilots"
+    [show]="!showModal"
+    (toggleModal)="toggleModal($event)" />
+
+<app-modal 
+    [show]="showModal" 
+    [data]="infoModal"
+    (toggleModal)="toggleModal($event)" />
+
+<app-sidebar 
+    [starships]="starships" 
+    [selected]="starship.id"
+    [show]="showSidebar" 
+    (toggleSidebar)="toggleSidebar()"
+    (goToStarship)="goToStarship($event)" />

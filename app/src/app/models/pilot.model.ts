@@ -1,3 +1,5 @@
+import { ModalDetails } from "../interfaces/modal.interface"
+
 export class Pilot {
     
     private fullname: string[] = []
@@ -37,6 +39,27 @@ export class Pilot {
         return this.assets.includes(this.id) 
             ? `./assets/characters/${ this.id }.png`
             : './assets/characters/not_found.svg'
+    }
+
+    get details(): ModalDetails[] {
+        return [
+            { label: 'Height:', value: `${this.height} cm` },
+            { label: 'Mass:', value: `${this.mass} kg` },
+            { label: 'Hair Color:', value: this.capitilize(this.hair_color) },
+            { label: 'Skin Color:', value: this.capitilize(this.skin_color) },
+            { label: 'Eye Color:', value: this.capitilize(this.eye_color) },
+            { label: 'Birth Year:', value: this.birth_year },
+            { label: 'Gender:', value: this.capitilize(this.gender) },
+            { label: 'Homeworld:', value: this.homeworld },
+        ]
+    }
+
+    get showImageInModal(): boolean {
+        return true
+    }
+
+    capitilize(str: string): string {
+        return str.charAt(0).toUpperCase() + str.slice(1)
     }
 
 }

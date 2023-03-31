@@ -1,0 +1,43 @@
+<div class="modal-overlay" 
+    [ngClass]="{'fade-out': !show, 'fade-in': show}"></div>
+
+<section class="modal-content" [ngClass]="{'modal-closed': !show, 'modal-opened': show}">
+    
+    <article class="modal-image" *ngIf="data.showImageInModal">
+        <img [src]="data.imageUrl" [alt]="data.name">
+    </article>
+
+    <article class="modal-title">
+        <div class="row">
+            <div class="col-1 align-left">
+                <button class="btn btn-icon" (click)="onToggleModal()">
+                    <i class="icon-left-arrow"></i>
+                </button>
+            </div>
+            <div class="col-11">
+                <ul *ngFor="let name of splitedName">
+                    <li><h2>{{ name }}</h2></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <article class="modal-subtitle">
+        <div class="row">
+            <div class="col-12">
+                <h3>Overview</h3>
+            </div>
+        </div>
+    </article>
+
+    <article class="modal-body">
+        <div class="row" *ngFor="let detail of data.details">
+            <div class="col-6 align-right text-bold">
+                {{ detail.label }}
+            </div>
+            <div class="col-6 align-left">
+                {{ detail.value }}
+            </div>
+        </div>
+    </article>
+</section>

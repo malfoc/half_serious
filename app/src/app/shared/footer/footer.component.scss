@@ -4,12 +4,27 @@ $height: 200px;
 
 $max-columns: 12;
 
+@keyframes slideDown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+}
+
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     display: flex;
     height: $height;
+    z-index: 9999;
+
+    &.hidden {
+        transform: translateY(100%);
+        animation: slideDown 1s ease;
+    }
 
     .pilots-label {
         align-items: center;

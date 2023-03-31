@@ -1,25 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .sidebar-overlay {
-	height: 100%;
-	left: 0;
-	top: 0;
-	width: 100%;
-	z-index: 9999;
-    background-color: $color_primary;
-    position: fixed;
-
-    &.fade-out {
-        opacity: 0;
-        transition: opacity 0.3s ease-out;
-        pointer-events: none;
-    }
-
-    &.fade-in {
-        opacity: 25%;
-        transition: opacity 0.3s ease-in;
-        pointer-events: all;
-    }
+	@include overlay();
 }
 
 .sidebar-content {

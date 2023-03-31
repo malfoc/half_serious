@@ -1,3 +1,4 @@
+import { ModalDetails } from "../interfaces/modal.interface";
 import { Pilot } from "../models/pilot.model";
 
 export class Starship {
@@ -34,6 +35,25 @@ export class Starship {
         return this.assets.includes(this.id) 
             ? `./assets/starships/${ this.id }.png`
             : './assets/starships/not_found.svg'
+    }
+
+    get details(): ModalDetails[] {
+        return [
+            { label: 'Cost in credits:', value: this.cost_in_credits},
+            { label: 'Length:', value: this.length},
+            { label: 'Max. Atmosphering Speed:', value: this.max_atmosphering_speed},
+            { label: 'Crew:', value: this.crew},
+            { label: 'Passengers:', value: this.passengers},
+            { label: 'Cargo Capacity:', value: this.cargo_capacity},
+            { label: 'Consumables:', value: this.consumables},
+            { label: 'Hyperdrive Rating:', value: this.hyperdrive_rating},
+            { label: 'MGLT:', value: this.mglt},
+            
+        ]
+    }
+
+    get showImageInModal(): boolean {
+        return false
     }
 
 }

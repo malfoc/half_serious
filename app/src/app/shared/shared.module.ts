@@ -6,6 +6,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContainerComponent } from './container/container.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -13,14 +14,16 @@ import { LoadingComponent } from './loading/loading.component';
     SidebarComponent,
     FooterComponent,
     ContainerComponent,
-    LoadingComponent
+    LoadingComponent,
+    ModalComponent
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
     ContainerComponent,
-    LoadingComponent
+    LoadingComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule

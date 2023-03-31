@@ -2,3 +2,26 @@ $color_bg: #E3E7EB;
 $color_primary: #181A1C;
 $color_secondary: #EDF1F4;
 $color_tertiary: #B0B4B7;
+
+
+@mixin overlay() {
+    height: 100%;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 9999;
+    background-color: $color_primary;
+    position: fixed;
+
+    &.fade-out {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        pointer-events: none;
+    }
+
+    &.fade-in {
+        opacity: 25%;
+        transition: opacity 0.3s ease-in;
+        pointer-events: all;
+    }
+}

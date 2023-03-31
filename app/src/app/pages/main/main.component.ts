@@ -1,8 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 
+import { Modal } from 'src/app/interfaces/modal.interface';
+
 import { Pilot } from 'src/app/models/pilot.model';
 import { Starship } from 'src/app/models/starship.model';
-import { ActivatedRoute, Router } from '@angular/router';
 
 import { StarshipService } from 'src/app/services/starship.service';
 
@@ -29,12 +30,14 @@ export class MainComponent implements OnInit {
   
   totalStarships: number = 0
 
-  show: boolean = false;
+  showSidebar: boolean = false;
+
+  showModal: boolean = false;
+
+  infoModal: Modal = { imageUrl: '', name: '', details: [], showImageInModal: false };
 
   constructor(
       private starshipService: StarshipService,
-      private route: ActivatedRoute,
-      private router: Router,
     ) {
     
     const pilots: Pilot[] = []
@@ -53,34 +56,36 @@ export class MainComponent implements OnInit {
 
         console.log(starships)
 
-        this.route.params.subscribe( params => {
-          
-          const starship = this.starships.find(starship => starship.id == this.defaultStarshipId)
-          if ( starship ) {
-            this.starship = starship
-            this.currentStarshipIndex = this.defaultStarshipId - 1
-          } else {
-            this.starship = this.starships[ 0 ]
-          }
-
-        })
+        const starship = this.starships.find(starship => starship.id == this.defaultStarshipId)
+        if ( starship ) {
+          this.starship = starship
+          this.currentStarshipIndex = this.defaultStarshipId - 1
+        } else {
+          this.starship = this.starships[ 0 ]
+        }
       }
     })
 
   }
 
   toggleSidebar() : void {
-    this.show = !this.show
+    this.showSidebar = !this.showSidebar
+  }
+  
+  toggleModal($event: any) : void {
+    this.infoModal = $event
+    this.showModal = !this.showModal
   }
 
   goToStarship($event: number) : void {
     this.starship = this.starships[$event]
     this.currentStarshipIndex = $event
+    this.showModal = false
   }
 
   @HostListener('wheel', ['$event'])
   onWheelScroll($event: WheelEvent): void {
-    if ( this.totalStarships > 0 && !this.show ) {
+    if ( this.totalStarships > 0 && !this.showSidebar && !this.showModal ) {
       if (!this.scrolling) {
         this.scrolling = true
 

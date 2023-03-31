@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Pilot } from 'src/app/models/pilot.model';
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,14 @@ import { Component, Input } from '@angular/core';
 export class FooterComponent {
 
   @Input() pilots: any[] = []
+
+  @Input() show: boolean = true;
+  
+  @Output() toggleModal = new EventEmitter<Pilot>()
+
+  onToggleModal(pilot: Pilot): void {
+    this.show = false;
+    this.toggleModal.emit(pilot);
+  }
 
 }

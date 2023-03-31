@@ -1,4 +1,4 @@
-<footer>
+<footer [ngClass]="{'hidden': !show}">
     <section class="row">
         <aside class="col">
             <div class="pilots-label text-small">PILOTS</div>
@@ -21,7 +21,7 @@
                 </div>
                 
                 <div class="col-3" *ngFor="let pilot of pilots">
-                    <div class="pilot-card row">
+                    <div class="pilot-card row" (click)="onToggleModal(pilot)">
                         <div class="col-4 valign-middle">
                             <img class="pilot-image" [src]="pilot.imageUrl" [alt]="pilot.name">
                         </div>
