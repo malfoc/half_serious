@@ -54,8 +54,6 @@ export class MainComponent implements OnInit {
         this.starships = starships
         this.totalStarships = this.starships.length
 
-        console.log(starships)
-
         const starship = this.starships.find(starship => starship.id == this.defaultStarshipId)
         if ( starship ) {
           this.starship = starship

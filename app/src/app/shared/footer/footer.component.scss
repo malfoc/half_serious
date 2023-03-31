@@ -4,15 +4,6 @@ $height: 200px;
 
 $max-columns: 12;
 
-@keyframes slideDown {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(100%);
-    }
-}
-
 footer {
     position: fixed;
     bottom: 0;
@@ -23,7 +14,7 @@ footer {
 
     &.hidden {
         transform: translateY(100%);
-        animation: slideDown 1s ease;
+        animation: slide-down 1s ease;
     }
 
     .pilots-label {

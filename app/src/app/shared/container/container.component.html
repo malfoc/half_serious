@@ -1,49 +1,50 @@
-<div class="starship-name">
+<div class="container-starship-name">
     <ul *ngFor="let name of splitedName">
-        <li><h1>{{ name }}</h1></li>
+        <li>
+            <h1>{{ name }}</h1>
+        </li>
     </ul>
 </div>
 
-<div class="starship-image align-center valign-middle" *ngIf="starship.id != 0">
-    <img [src]="starship.imageUrl" [alt]="starship.name">
+<div class="container-image">
+    <p class="text-small" *ngIf="!currentImageUrl">
+        Loading ...
+    </p>
+    
+    <img 
+        [src]="previousImageUrl" 
+        (load)="onImageLoad()" 
+        [alt]="starship.name"
+        [ngClass]="{'slide-out': imageLoaded}">
+
+    <img 
+        [src]="currentImageUrl" 
+        (load)="onImageLoad()" 
+        [alt]="starship.name" 
+        [ngClass]="{'slide-in': imageLoaded}"
+        [hidden]="loading">
 </div>
 
-<section class="container">
-    <article class="counter">
-        <h2>{{ starship.index }}</h2>
-        <h3>/ {{ total }}</h3>
-    </article>
-
-    <article class="info">
-        <div class="row">
-            <div class="col-6">
-                <div class="row">
-                    <div class="col-12 text-title">
-                        {{ starship.name }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-subtitle">
-                        {{ starship.model }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-bold">
-                        {{ starship.starship_class }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 text-small">
-                        {{ starship.manufacturer }}
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-6 align-right valign-bottom">
-                <button class="btn btn-outline" (click)="onToggleModal()">
-                    More info
-                </button>
-            </div>
+<div class="container-info">
+    <div class="section">
+        <div>
+            <h2>{{ starship.index }}</h2>
+            <h3>/{{ total }}</h3>
         </div>
-    </article>
-</section>
+    </div>
+    <div class="section">
+        <div>
+            <section>
+                <article class="text-title">{{ starship.name }}</article>
+                <article class="text-subtitle">{{ starship.model }}</article>
+                <article class="text-bold">{{ starship.starship_class }}</article>
+                <article class="text-small">{{ starship.manufacturer }}</article>
+            </section>
+        </div>
+        <div>
+            <button class="btn btn-outline" (click)="onToggleModal()">
+                More info
+            </button>
+        </div>
+    </div>
+</div>

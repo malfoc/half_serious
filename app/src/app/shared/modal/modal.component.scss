@@ -1,14 +1,5 @@
 @import '../../../styles/variables.scss';
 
-@keyframes showUp {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .modal-overlay {
 	@include overlay();
 }
@@ -37,7 +28,7 @@
         opacity: 1;
 
         .modal-title, .modal-subtitle, .modal-image, .modal-body {
-            animation: showUp 0.3s ease 1s forwards;
+            animation: show-up 0.3s ease 1s forwards;
         }
     }
 

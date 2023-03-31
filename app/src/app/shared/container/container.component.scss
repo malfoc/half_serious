@@ -1,24 +1,4 @@
-.container {
-    margin: 0 160px;
-    height: calc(100vh - 280px);
-    position: relative;
-
-    .counter {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
-
-    .info{
-        position: absolute;
-        bottom: 20px;
-        left: 0px;
-        width: 100%;
-        padding: 0 20px;
-    }
-}
-
-.starship-name {
+.container-starship-name {
     left: -50px;
     opacity: 25%;
     position: absolute;
@@ -32,15 +12,66 @@
     }
 }
 
-.starship-image {
-    height: 700px;
-    left: 50%;
+.container-image {
     position: absolute;
-    top: 30px;
-    transform: translateX(-50%);
-    width: 700px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 
     img {
-        width: 70vw;
+        position: absolute;
+        top: 20%;
+        max-height: calc(100vh - 90px);
+
+        &.slide-in {
+            animation: slide-in 1s ease-in;
+            opacity: 1;
+        }
+
+        &.slide-out {
+            animation: slide-out 1s ease-in;
+            opacity: 0;
+        }
     }
 }
+
+.container-info {
+    height: calc(90vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 160px;
+
+    .section {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        &:first-child {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        &:last-child {
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-bottom: 20px;
+
+            div {
+                width: 100%;
+                display: flex;
+
+                &:first-child {
+                    padding-left: 10%;
+                }
+
+                &:last-child {
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}
+
