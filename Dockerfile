@@ -6,7 +6,7 @@ COPY . /app
 
 RUN npm install -g @angular/cli
 
-EXPOSE 8080
 EXPOSE 49153
+EXPOSE 9876
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
