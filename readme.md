@@ -58,7 +58,9 @@ After empathizing with and defining the requirements of the project, we proceede
 In the folder ./wireframes you will find four schematic pages as a visual guide that represents the skeletal framework of the project, created using [Adobe XD](https://www.adobe.com/products/xd.html).
 
 ### Mockups
-In the folder ./mockups you will find the model pages as graphic guidelines of the to-be system, created using [Figma](https://www.figma.com/).
+In the folder ./mockups you will find the model pages as graphic guidelines of the to-be system, created using [Figma](https://www.figma.com/file/iQyoqiJS2GYWDi3er7iGP8/HalfSerious?node-id=0%3A1&t=FMVKCKDSONpNKe0o-1).
+
+
 
 __Graphic Guidelines__
 
