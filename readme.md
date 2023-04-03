@@ -95,13 +95,42 @@ The iconography was taken from *[PNG Find](https://www.pngfind.com/)*
 >
 > *[ProtoPie](https://www.protopie.io/)* is highly recommended for the prototyping process.
 
+## Deployment
+
+This section explains the necessary steps to deploy the project.
+
+To install the npm libraries, run the following command in your terminal:
+
+```bash
+  npm install
+```
+
+To compile the project and prepare it for deployment, use:
+
+```bash
+  ng build
+```
+
+To deploy the project in a development environment, use:
+
+```bash
+  ng serve
+```
+
 ## Running Tests
 
-To run tests, run the following command
+Before deploying your project, it's always a good idea to run tests to ensure that everything is working as expected. Here's how you can do that:
+
+To run tests, use the following command in your terminal:
 
 ```bash
   ng tests
 ```
+
+> Note:
+>
+> I would like to clarify that I have implemented some unit tests as a demonstration of my technical skills in programming. While I understand that achieving 100% coverage is ideal, I have performed a representative sample for this technical test that showcases my knowledge in this area.
+
 
 ## Additional Features
 

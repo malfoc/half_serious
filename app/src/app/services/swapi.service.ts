@@ -36,21 +36,26 @@ export class SwapiService {
 
     const records: any[] = []
 
-    const { count, results }: any = await lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/`))
-    records.push(results)
-
-    const length = Math.ceil(count / results.length)
-    const promises = Array.from(new Array(length), ( _, page) =>
-      lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/?page=${ page + 1 }`))
-    )
-    promises.shift()
-
-    const responses = await Promise.all(promises)
-    responses.forEach(({results}: any) => {
+    try {
+      const { count, results }: any = await lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/`))
       records.push(results)
-    })
 
-    return records.flat()
+      const length = Math.ceil(count / results.length)
+      const promises = Array.from(new Array(length), ( _, page) =>
+        lastValueFrom(this.http.get(`${ this.baseUrl }/${model}/?page=${ page + 1 }`))
+      )
+      promises.shift()
+
+      const responses = await Promise.all(promises)
+      responses.forEach(({results}: any) => {
+        records.push(results)
+      })
+
+      return records.flat()  
+    } catch (error: any) {
+      throw new Error(`Error while fetching ${model} data: ${error.message}`)
+    }
+    
   }
 
   async _planets(): Promise<Planet[]> {

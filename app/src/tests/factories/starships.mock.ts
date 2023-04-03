@@ -1,0 +1,21 @@
+export const Starships: object[] = [
+    {
+        "id": 12,
+        "name": "X-wing",
+        "model": "T-65 X-wing",
+        "manufacturer": "Incom Corporation",
+        "cost_in_credits": "149999",
+        "length": "12.5",
+        "max_atmosphering_speed": "1050",
+        "crew": "1",
+        "passengers": "0",
+        "cargo_capacity": "110",
+        "consumables": "1 week",
+        "hyperdrive_rating": "1.0",
+        "mglt": "100",
+        "starship_class": "Starfighter",
+        "pilots": [
+            "https://swapi.dev/api/people/1/"
+        ],
+    }
+]
