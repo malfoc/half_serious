@@ -36,6 +36,10 @@ Due to the creative freedom that this project had, certain stages of the Design 
 
 After empathizing with and defining the requirements of the project, we proceeded with ideating.
 
+> Note:
+>
+>This project is an Angular test for a hiring process, in which we aimed to assess code quality and meet the requested functional requirements. As such, the design is not optimized for mobile devices, and responsiveness was not taken into account during development. While we understand the importance of responsiveness in most projects, in this case we chose to focus on other technical aspects.
+
 ### Inspiration & References
 
 - https://dribbble.com/shots/14543693--Artist-Info-Carousel-Concept
@@ -51,12 +55,10 @@ After empathizing with and defining the requirements of the project, we proceede
 > See the Pen *[Loading Animation CSS](https://codepen.io/42EG4M1/pen/bVMzze)* by Tatsuya Azegami (*[@42EG4M1](https://codepen.io/42EG4M1)*)
 
 ### Wireframes
-
-In the folder `./wireframes` you will find four schematic pages as a visual guide that represents the skeletal framework of the project.
+In the folder ./wireframes you will find four schematic pages as a visual guide that represents the skeletal framework of the project, created using [Adobe XD](https://www.adobe.com/products/xd.html).
 
 ### Mockups
-
-In the folder `./mockups` you will find the model pages as graphic guidelines of the **to-be system**
+In the folder ./mockups you will find the model pages as graphic guidelines of the to-be system, created using [Figma](https://www.figma.com/).
 
 __Graphic Guidelines__
 
